@@ -31,6 +31,9 @@ Le fichier `config.lua` permet de personnaliser :
 3. Choisissez votre mode de jeu (Solo/Coop)
 4. Survivez aux vagues d'ennemis
 
+## Mapping par défaut 
+https://www.gta5-mods.com/maps/gta-iv-fight-club-interior-sp-fivem
+
 ## Licence
 MIT License
 
