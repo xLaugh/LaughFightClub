@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fight Club</title>
+    <link rel="stylesheet" type="text/css" href="nui://laughFightClub/html/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="fightclub-container" class="hidden">
+        <div class="main-content">
+            <div class="header">
+                <h1>FIGHT CLUB</h1>
+                <div class="wave-banner">
+                    <span class="wave-text">VAGUE</span>
+                    <span id="current-wave">1</span>
+                    <span class="wave-max">/15</span>
+                </div>
+            </div>
+
+            <div class="stats-container">
+                <div class="stat-box">
+                    <div class="stat-label">PNJs RESTANTS</div>
+                    <div class="stat-value" id="npcs-remaining">0</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-label">TEMPS</div>
+                    <div class="stat-value" id="timer">00:00</div>
+                </div>
+            </div>
+
+            <div class="health-bar">
+                <div class="health-fill"></div>
+                <span class="health-text">100%</span>
+            </div>
+        </div>
+    </div>
+
+    <div id="registration-menu" class="hidden">
+        <div class="menu-content">
+            <button class="close-button" id="close-btn"></button>
+            <h2>CHOISISSEZ VOTRE MODE</h2>
+            <div class="mode-buttons">
+                <button id="solo-btn" class="game-btn">
+                    <span class="btn-title">SOLO</span>
+                    <span class="btn-desc">Affrontez les vagues seul</span>
+                </button>
+                <button id="coop-btn" class="game-btn">
+                    <span class="btn-title">CO-OP</span>
+                    <span class="btn-desc">Combattez à deux</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="waiting-message" class="hidden">
+        <div class="waiting-content">
+            <h2>EN ATTENTE D'UN SECOND JOUEUR</h2>
+            <div class="spinner"></div>
+            <button id="cancel-search" class="cancel-btn">ANNULER LA RECHERCHE</button>
+        </div>
+    </div>
+
+    <script src="nui://laughFightClub/html/script.js"></script>
+</body>
+</html> 
