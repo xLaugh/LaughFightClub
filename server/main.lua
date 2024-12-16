@@ -103,11 +103,9 @@ end
 function StartFight()
     if not activeFight.active then return end
     
-    -- Réinitialiser la vague
     activeFight.wave = 0
     activeFight.npcs = {}
     
-    -- Informer les clients que le combat commence
     for _, playerId in ipairs(activeFight.players) do
         TriggerClientEvent('fightclub:startFight', playerId)
     end
@@ -124,16 +122,12 @@ function StartNextWave()
     
     activeFight.wave = activeFight.wave + 1
     if activeFight.wave <= #Config.WaveConfig then
-        -- Informer les clients de la nouvelle vague
         BroadcastToPlayers('fightclub:startWave', activeFight.wave)
         
-        -- Spawn les PNJs
         local config = Config.WaveConfig[activeFight.wave]
         if #activeFight.players > 0 then
-            -- Petit délai pour s'assurer que tout est synchronisé
             Citizen.Wait(1000)
             TriggerClientEvent('fightclub:spawnNPCs', activeFight.players[1], config.npcs)
-            -- Mettre à jour le nombre de PNJs
             BroadcastToPlayers('fightclub:updateWaveInfo', {
                 wave = activeFight.wave,
                 npcsRemaining = #config.npcs
@@ -166,7 +160,6 @@ Citizen.CreateThread(function()
         Citizen.Wait(1000)
         if activeFight.active then
             CheckWaveComplete()
-            -- La mise à jour du compte des PNJs se fait maintenant côté client
         end
     end
 end)
@@ -191,7 +184,6 @@ RegisterNetEvent('fightclub:waveComplete')
 AddEventHandler('fightclub:waveComplete', function()
     local source = source
     if activeFight.active and has_value(activeFight.players, source) then
-        -- Attendre un court instant avant de lancer la prochaine vague
         Citizen.Wait(3000)
         StartNextWave()
     end
@@ -215,16 +207,13 @@ RegisterNetEvent('fightclub:cancelSearch')
 AddEventHandler('fightclub:cancelSearch', function()
     local source = source
     
-    -- Si le joueur était en attente
     if activeFight.waitingForPlayer and has_value(activeFight.players, source) then
-        -- Réinitialiser l'état du combat
         activeFight.active = false
         activeFight.players = {}
         activeFight.wave = 0
         activeFight.mode = nil
         activeFight.waitingForPlayer = false
-        
-        -- Notifier le joueur
+            
         TriggerClientEvent('fightclub:notification', source, "Recherche annulée!")
     end
 end) 
